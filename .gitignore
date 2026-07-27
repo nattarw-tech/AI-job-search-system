@@ -1,0 +1,26 @@
+# Your personal career folder must never be committed.
+# If you created it inside this project, these lines stop it being published.
+Job_Search_HQ/
+job_search_hq/
+Career_System/
+Network/
+Tracker/
+Output/
+Source_Material/
+
+# Personal documents
+*.docx
+*.doc
+*.pdf
+*.csv
+!**/assets/**/*.csv
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
