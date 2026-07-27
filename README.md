@@ -20,7 +20,11 @@ After setup, you paste a job advert and say "apply for this". You get back a CV 
 
 This is the only real requirement, and it rules out the ordinary chat websites. ChatGPT in a browser, Gemini in a browser and Claude in a browser cannot save files to your computer, so they cannot remember anything between conversations. You need what is usually called a "coding agent" or "CLI" — it runs on your machine and can open and save files.
 
-The easiest one is **Claude Code**. Installation instructions are at [claude.com/claude-code](https://claude.com/claude-code). You need a Claude account. There is a free tier; heavy use needs a paid plan.
+The easiest one is **Claude Code**. Installation instructions are at [claude.com/claude-code](https://claude.com/claude-code). You need a Claude account.
+
+**Expect to need a paid subscription.** A 45-minute setup interview followed by regular CV builds is more than free tiers are designed to carry, on any of the major providers. You will probably hit a limit partway through setup on a free plan. That is not a flaw in this system, it is what running an AI agent costs. See [Keeping the cost down](#keeping-the-cost-down) for how to make a subscription stretch.
+
+If you run a model locally on your own hardware, cost stops being a factor, though you will need a capable machine and a model good enough to follow long instructions accurately.
 
 Other tools work too. See [Using a different AI tool](#using-a-different-ai-tool) below.
 
@@ -149,6 +153,26 @@ The system is just a set of written instructions, so any capable AI can follow t
 **Other agent tools** — Gemini CLI, OpenAI Codex, Cursor, GitHub Copilot, Windsurf, Zed, Aider, JetBrains Junie and others — read a file called `AGENTS.md`, which is included here. Open your tool in this folder and say "set up my job search system". It should find its way. If it does not, tell it to read `.claude/skills/job-search-setup/SKILL.md` and follow it.
 
 **Browser chat tools** — ChatGPT, Gemini and Claude on the web — will not work properly. They cannot save files to your computer, so nothing survives the conversation ending, which removes the entire point. You can paste the instructions in and get one CV out of it, but you will be starting from scratch every time.
+
+---
+
+## Keeping the cost down
+
+AI tools charge by how much text they read and write. Every message you send re-sends the whole conversation so far, so a long rambling session costs far more than several short focused ones. Five habits do most of the work:
+
+**1. Start a fresh conversation for each job.** This is the big one. In Claude Code, type `/clear` between applications. Otherwise application number four is still carrying applications one, two and three in memory, and paying for them every time.
+
+**2. Do one application at a time.** Finish it, clear, start the next. Batching feels efficient and is the most expensive way to work.
+
+**3. Keep `CAREER_FACTS.md` tight.** It gets read on nearly every task, so it is the file you pay for most often. Facts, numbers and dates. Not stories.
+
+**4. Do not paste a whole careers page.** Paste the job description text. The navigation menu, the cookie banner and the company boilerplate all cost the same as the useful part.
+
+**5. Ask for what you want.** "Tailor my CV for this" is cheaper than a conversation that wanders toward the same place.
+
+The setup interview is the most expensive single session you will have, and it happens once. Day-to-day use afterwards is much lighter, because only the one instruction file needed for the task gets loaded rather than the whole system.
+
+If you want to see what you are spending, Claude Code has a `/cost` command.
 
 ---
 

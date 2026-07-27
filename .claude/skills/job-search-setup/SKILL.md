@@ -778,9 +778,11 @@ Include older roles in condensed form. They close date gaps and prove tenure.
 
 **7. Build the file.**
 
+**Never read `word/document.xml` into context.** A formatted CV's XML runs to tens of thousands of tokens and costs more than the rest of this task combined. In order of preference:
+
 - If a `docx` skill is available in this environment, use it.
-- Otherwise, if a previous CV exists in `HQ/Output/`, copy it, unpack the .docx, edit `word/document.xml`, repack. Match the existing fonts, sizes, margins and bullet style exactly.
-- If neither is possible, produce clean Markdown and say plainly that they need to move it into their own template.
+- Otherwise, if a previous CV exists in `HQ/Output/`, copy it and write a short script that unpacks the file, does targeted find-and-replace on the text, and repacks it. The script touches the XML; you never load it. Confirm the result by opening it, not by reading the markup back.
+- If neither is possible, produce clean Markdown and say plainly that they need to paste it into their own template.
 
 Page limit from CV_RULES.md. Check it before delivering, do not guess.
 
@@ -839,7 +841,7 @@ Never write a sentence they would not say out loud.
 
 ## Build
 
-Use the `docx` skill if available. Otherwise copy the most recent letter in `HQ/Output/` for format, unpack, edit `word/document.xml`, repack. Confirm it fits one page.
+Use the `docx` skill if available. Otherwise copy the most recent letter in `HQ/Output/` and script the find-and-replace. **Never read `word/document.xml` into context** — it is enormous and it is the single most expensive thing you can do in this task. Confirm it fits one page.
 
 Save as `HQ/Output/[Name]_CoverLetter_[Company]_[ShortRole].docx`.
 
@@ -868,7 +870,7 @@ description: "Writes the user's networking and job search messages: cold emails 
 
 1. `HQ/Career_System/MESSAGE_LIBRARY.md` - the templates and the three moves.
 2. `HQ/Career_System/POSITIONING.md` - level, lanes, how salary and work rights are handled.
-3. `HQ/Career_System/CAREER_FACTS.md` - so every claim in the message is true.
+3. `HQ/Career_System/CAREER_FACTS.md` - **only the sections this message actually touches**, usually the current or most recent role. A 150-word email does not need the whole ledger loaded. Search it for what you need rather than reading it end to end.
 4. `HQ/Network/Contacts.csv` - check whether this person already exists and what was said last time.
 
 ## Before writing anything, get one specific thing
@@ -1198,6 +1200,8 @@ Then stop. Do not tailor a CV in the same breath as setting the system up.
 - **Never invent a fact to fill a template.** An empty field is recoverable. A fabricated employer, metric or title is not, and it will surface in an interview.
 - **Never push someone to inflate a title or a level.** Say what the risk is and let them decide.
 - **Write the files above in full.** They are the system. A shortened CV_RULES.md produces worse CVs for the next two years.
+- **Keep CAREER_FACTS.md tight.** It is read on almost every task, so every paragraph of waffle in it is paid for again and again. Facts, numbers and dates. No narrative.
+- **Never read a .docx's internal XML into context.** Script the edit instead. It is the single most expensive mistake available in this system.
 - Salary goes in POSITIONING.md and nowhere else. It never appears in a CV, letter or message.
 - The user sends everything themselves. These skills draft, they never send, submit or apply.
 - If they are mid-career and reluctant to talk about older roles, explain why the dates matter and get the two-line version.

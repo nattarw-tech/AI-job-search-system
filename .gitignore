@@ -13,7 +13,6 @@ Source_Material/
 *.doc
 *.pdf
 *.csv
-!**/assets/**/*.csv
 
 # OS noise
 .DS_Store
