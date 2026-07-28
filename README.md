@@ -20,7 +20,9 @@ After setup, you paste a job advert and say "apply for this". You get back a CV 
 
 This is the only real requirement, and it rules out the ordinary chat websites. ChatGPT in a browser, Gemini in a browser and Claude in a browser cannot save files to your computer, so they cannot remember anything between conversations. You need what is usually called a "coding agent" or "CLI" — it runs on your machine and can open and save files.
 
-The easiest one is **Claude Code**. Installation instructions are at [claude.com/claude-code](https://claude.com/claude-code). You need a Claude account.
+The easiest one is **Claude Code**, and it comes as a normal desktop app for Mac, Windows and Linux — you do not have to touch a command line. Download it at [claude.com/download](https://claude.com/download). You need a Claude account.
+
+If the phrase "coding agent" made you nervous, this is the part to relax about. You click a button to pick a folder, then type in plain English.
 
 **Expect to need a paid subscription.** A 45-minute setup interview followed by regular CV builds is more than free tiers are designed to carry, on any of the major providers. You will probably hit a limit partway through setup on a free plan. That is not a flaw in this system, it is what running an AI agent costs. See [Keeping the cost down](#keeping-the-cost-down) for how to make a subscription stretch.
 
@@ -50,25 +52,39 @@ Then unzip it somewhere you will find again, like your Documents folder. On Wind
 
 If you know how to use Git, clone it instead. If you do not know what that means, ignore this line — the ZIP is fine.
 
-### Step 2: Open your AI tool in that folder
+### Step 2: Open the folder in Claude
 
-Install Claude Code if you have not already, following the instructions on its website.
+There are two ways to do this. **The desktop app is the easy one, and there is no disadvantage to it** — it is the same tool with a normal window instead of a command line. Use it unless you already live in a terminal.
 
-Then open a terminal — that is the black window where you type commands. On Windows it is called Terminal or PowerShell; on Mac it is called Terminal. Search your machine for it by name.
+#### The easy way: the Claude desktop app
 
-Type this, replacing the path with wherever you unzipped the folder:
+**1. Install it.** Download from [claude.com/download](https://claude.com/download) — there are Mac, Windows and Linux versions. Install it like any other program and sign in.
+
+**2. Windows only:** you also need Git for Windows, from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Install it, then restart Claude. You will never use Git directly — the app needs it running underneath. Skip this on Mac, where it is already there.
+
+**3. Open the app and click the `Code` tab** along the top. The app has three tabs: Chat, Cowork and Code. You want **Code**.
+
+**4. Click `Select folder`** and choose the folder you unzipped in Step 1.
+
+**5. Choose `Local`** if it asks what kind of session you want. That means "work with the files on my own computer", which is what you need. Cloud and SSH options will not work for this.
+
+That is it. No commands, no black window.
+
+#### The other way: the terminal
+
+Only if you prefer it. Install Claude Code following the instructions at [claude.com/claude-code](https://claude.com/claude-code), then open Terminal (Mac) or Terminal / PowerShell (Windows), and type this with your own path:
 
 ```
-cd "C:\Users\yourname\Documents\ai-job-search-system"
+cd "C:\Users\yourname\Documents\AI-job-search-system"
 ```
 
-Then type:
+Then:
 
 ```
 claude
 ```
 
-That starts Claude Code inside the project folder, which is how it finds the setup instructions.
+Either route ends up in the same place. What matters is that Claude is **opened on the folder you unzipped**, because that is where it finds the setup instructions.
 
 ### Step 3: Say the words
 
@@ -166,7 +182,7 @@ The system is just a set of written instructions, so any capable AI can follow t
 
 AI tools charge by how much text they read and write. Every message you send re-sends the whole conversation so far, so a long rambling session costs far more than several short focused ones. Five habits do most of the work:
 
-**1. Start a fresh conversation for each job.** This is the big one. In Claude Code, type `/clear` between applications. Otherwise application number four is still carrying applications one, two and three in memory, and paying for them every time.
+**1. Start a fresh conversation for each job.** This is the big one. Type `/clear` between applications, or start a new session in the desktop app. Otherwise application number four is still carrying applications one, two and three in memory, and paying for them every time.
 
 **2. Do one application at a time.** Finish it, clear, start the next. Batching feels efficient and is the most expensive way to work.
 
@@ -185,7 +201,14 @@ If you want to see what you are spending, Claude Code has a `/cost` command.
 ## Common problems
 
 **"It says it cannot find the instructions."**
-You are probably running it from the wrong folder. Close it, `cd` into the unzipped project folder, and start again. The instructions live inside the project, so it has to be started there.
+It is open on the wrong folder. The instructions live inside the project, so it has to be pointed at the folder you unzipped.
+
+In the desktop app, click **Select folder** again and pick the unzipped folder — the one containing `README.md` and a `.claude` folder. If you selected the folder that *contains* it rather than the folder itself, that is the usual mistake.
+
+In the terminal, close it, `cd` into the project folder, and run `claude` again.
+
+**"I installed the desktop app on Windows and the Code tab will not work."**
+You are missing Git for Windows. Install it from [git-scm.com/downloads/win](https://git-scm.com/downloads/win), then fully restart Claude.
 
 **"It asked me a question I do not know the answer to."**
 Say so. "I do not know" and "skip that" both work. It marks the gap and moves on.
