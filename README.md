@@ -1,94 +1,56 @@
 # AI Job Search System
 
-Most people use AI for job hunting by pasting their CV into a chat window and asking it to rewrite something. It works once. Then the chat closes, everything it learned about you is gone, and next time you start over.
+Most people use AI for job hunting by pasting their CV into a chat and asking it to rewrite something. Two things go wrong.
 
-Worse, it makes things up. Ask an AI to match your CV to a job and it will quietly invent a percentage, upgrade a job title, or claim a tool you have never opened. You do not notice, because it sounds right. Then someone asks about it in an interview.
+**It forgets.** Close the chat and everything it learned about you is gone. Next time, you start again.
 
-This fixes both problems.
+**It makes things up.** Ask it to match your CV to a job and it will invent a percentage, upgrade a job title, or claim a tool you have never opened. It sounds right, so you do not notice. Then someone asks about it in an interview.
 
-It interviews you once about your career, writes what you tell it into a set of files on your own computer, and then uses only those files to build everything afterwards. Nothing gets invented, because there is a written record of what is true and everything traces back to it. And it remembers, because the files stay on your machine between sessions.
+This fixes both.
 
-After setup, you paste a job advert and say "apply for this". You get back a CV tailored to that advert, a cover letter, a row in your application tracker, and the names of two people at that company worth emailing directly.
+It interviews you once about your career and saves your answers to your own computer. After that, everything it writes comes only from those saved answers. Nothing invented, and nothing forgotten.
 
-**It is free, it runs on your own computer, and your career information never goes anywhere you did not send it.**
+Then you paste a job advert, say **"apply for this"**, and get back a tailored CV, a cover letter, a tracker entry, and two people at that company worth emailing.
 
----
-
-## What you need
-
-**1. An AI tool that can read and write files on your computer.**
-
-This is the only real requirement, and it rules out the ordinary chat websites. ChatGPT in a browser, Gemini in a browser and Claude in a browser cannot save files to your computer, so they cannot remember anything between conversations. You need what is usually called a "coding agent" or "CLI" — it runs on your machine and can open and save files.
-
-The easiest one is **Claude Code**, and it comes as a normal desktop app for Mac, Windows and Linux — you do not have to touch a command line. Download it at [claude.com/download](https://claude.com/download). You need a Claude account.
-
-If the phrase "coding agent" made you nervous, this is the part to relax about. You click a button to pick a folder, then type in plain English.
-
-**Expect to need a paid subscription.** A 45-minute setup interview followed by regular CV builds is more than free tiers are designed to carry, on any of the major providers. You will probably hit a limit partway through setup on a free plan. That is not a flaw in this system, it is what running an AI agent costs. See [Keeping the cost down](#keeping-the-cost-down) for how to make a subscription stretch.
-
-If you run a model locally on your own hardware, cost stops being a factor, though you will need a capable machine and a model good enough to follow long instructions accurately.
-
-Other tools work too. See [Using a different AI tool](#using-a-different-ai-tool) below.
-
-**2. About 45 minutes**, once, for the setup interview.
-
-**3. Your current CV**, if you have one. Not essential, but it makes the interview much faster.
-
-You do not need to know how to code. You will not write any code. You type in plain English throughout.
+Free to use, runs on your computer, and your details stay there.
 
 ---
 
-## Setting it up
+## Before you start
 
-### Step 1: Download this project
+**You need the Claude desktop app.** It is a normal app with a normal window. Download it at [claude.com/download](https://claude.com/download) and sign in. Mac, Windows and Linux.
 
-Click the green **Code** button at the top of this page.
+**You need a paid Claude plan.** A free plan will run out partway through setup. That is not this system being greedy, it is just what AI assistants use.
 
-A small panel opens. Depending on your account, it may show tabs along the top — **Local** and **Codespaces**. **Make sure you are on the Local tab.** If you land on Codespaces you will not see the download option at all, which is the usual reason people get stuck here.
+**Set aside 45 minutes** for the setup interview, once. Have your current CV nearby if you have one. It makes things much faster.
 
-On the Local tab, click **Download ZIP** at the bottom.
+You will not write any code. You type in plain English the whole way through.
 
-Then unzip it somewhere you will find again, like your Documents folder. On Windows, right-click the downloaded file and choose **Extract All**. On Mac, double-click it.
+> Already comfortable with a terminal, or use a different AI tool? See [Other ways to run this](#other-ways-to-run-this) at the bottom.
 
-If you know how to use Git, clone it instead. If you do not know what that means, ignore this line — the ZIP is fine.
+---
 
-### Step 2: Open the folder in Claude
+## Set it up
 
-There are two ways to do this. **The desktop app is the easy one, and there is no disadvantage to it** — it is the same tool with a normal window instead of a command line. Use it unless you already live in a terminal.
+### 1. Download this project
 
-#### The easy way: the Claude desktop app
+Click the green **Code** button near the top of this page.
 
-**1. Install it.** Download from [claude.com/download](https://claude.com/download) — there are Mac, Windows and Linux versions. Install it like any other program and sign in.
+A small panel opens. If you see tabs called **Local** and **Codespaces**, click **Local**. Then click **Download ZIP**.
 
-**2. Windows only:** you also need Git for Windows, from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Install it, then restart Claude. You will never use Git directly — the app needs it running underneath. Skip this on Mac, where it is already there.
+Now unzip the file. On Windows, right-click it and choose **Extract All**. On Mac, double-click it. Put the folder somewhere you will find again, like Documents.
 
-**3. Open the app and click the `Code` tab** along the top. The app has three tabs: Chat, Cowork and Code. You want **Code**.
+### 2. Open the folder in Claude
 
-**4. Click `Select folder`** and choose the folder you unzipped in Step 1.
+Open the Claude app and click the **Code** tab at the top.
 
-**5. Choose `Local`** if it asks what kind of session you want. That means "work with the files on my own computer", which is what you need. Cloud and SSH options will not work for this.
+Click **Select folder** and choose the folder you just unzipped.
 
-That is it. No commands, no black window.
+If it asks what kind of session you want, choose **Local**. That means "use the files on my own computer".
 
-#### The other way: the terminal
+> **Windows users:** if the Code tab will not work, you need Git for Windows from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Install it and restart Claude. You will never use Git yourself — the app needs it underneath.
 
-Only if you prefer it. Install Claude Code following the instructions at [claude.com/claude-code](https://claude.com/claude-code), then open Terminal (Mac) or Terminal / PowerShell (Windows), and type this with your own path:
-
-```
-cd "C:\Users\yourname\Documents\AI-job-search-system"
-```
-
-Then:
-
-```
-claude
-```
-
-Either route ends up in the same place. What matters is that Claude is **opened on the folder you unzipped**, because that is where it finds the setup instructions.
-
-### Step 3: Say the words
-
-Type this and press enter:
+### 3. Type this
 
 ```
 set up my job search system
@@ -100,155 +62,133 @@ That is the whole installation. It takes over from here.
 
 ## What happens next
 
-It asks where you want your personal folder to live. **Put it somewhere outside this project folder** — your Documents folder is ideal. That keeps your private career information separate from the downloaded project.
+First it asks where to keep your personal folder. **Choose somewhere outside this project folder**, like Documents. That keeps your private information separate.
 
-Then it interviews you, in six short rounds:
+Then it interviews you in six short rounds: where you are now, your work history, your skills and qualifications, your projects, what you are aiming for, and how you like to write.
 
-1. **Where you are now** — location, whether you can work in the countries you are targeting, how many years you have been working
-2. **Your work history** — every job, what you actually did, what changed because of you
-3. **Skills, tools, qualifications** — with honest levels, not inflated ones
-4. **Projects and anything outside work** that shows what you can do
-5. **What you are aiming for** — target roles, what you will refuse, your salary range
-6. **How you write** — British or American English, words you never want used in your name
+Two things make the difference between this working well and working badly:
 
-Answer honestly, including the awkward parts. If there is a gap in your CV, say so — it will help you describe it calmly, which is far better than being caught out later.
+**Be specific.** "I improved a process" gives you a weak CV. "I cut invoice approval from nine days to four" gives you a strong one. If you are vague, it will ask you once for the real version. Let it.
 
-**Be specific.** This is the single thing that decides whether the system is any good. "I improved a process" produces a weak CV. "I cut invoice approval from nine days to four" produces a strong one. If you are vague, it will push you once for the real version. Let it.
+**Be honest, including the awkward bits.** If you have a gap, say so. It will help you describe it calmly, which is much better than being caught out later.
 
-You can stop halfway through and come back another day. Everything answered so far is already saved.
+You can stop halfway and come back another day. Anything you have already answered is saved.
 
 ---
 
-## What you end up with
+## What you get
 
-A folder on your computer, yours, private:
+A folder of your own:
 
 ```
 Job_Search_HQ/
-  Career_System/
-    POSITIONING.md          what you are going for, and what you are not
-    CAREER_FACTS.md         every job, achievement, tool and qualification
-    CV_RULES.md             how your documents get written
-    MESSAGE_LIBRARY.md      templates for emails and LinkedIn messages
-    NETWORK_CADENCE.md      who to contact, and how often
-    INTERVIEW_PLAYBOOK.md   your stories, and the questions you will be asked
-  Network/                  everyone you have contacted, and what was said
-  Tracker/                  every application, in one file
-  Output/                   your finished CVs, letters and briefs
-  Source_Material/          your old CV and anything else
+  Career_System/     your facts, your targets, your writing style
+  Network/           everyone you have contacted, and what was said
+  Tracker/           every application in one place
+  Output/            your finished CVs and letters
 ```
 
-Plus seven abilities you can use just by asking in plain English:
+And these things you can ask for, in your own words:
 
-| Say this | You get |
+| Say something like | You get |
 | --- | --- |
-| paste a job advert, then "apply for this" | The whole thing: CV, cover letter, tracker entry, two people to email |
-| "tailor my CV for this" | One CV, matched to one advert, nothing invented |
+| paste a job advert, then "apply for this" | The lot: CV, cover letter, tracker entry, two people to email |
+| "tailor my CV for this" | One CV, matched to one advert |
 | "write the cover letter" | A letter that adds to your CV instead of repeating it |
-| "what do I say to this person?" | A short cold email or LinkedIn message |
-| "who should I contact this week?" | A ranked list from your contacts, with drafts ready |
-| "I have a coffee chat with Sam at Acme" | A one-page brief before, a thank you note after |
-| "I have an interview at Acme on Thursday" | Likely questions, your best answers, and a practice run |
+| "what do I say to this person?" | A short email or LinkedIn message |
+| "who should I contact this week?" | A list from your contacts, with messages ready |
+| "I have a coffee chat with Sam at Acme" | Notes before, a thank you after |
+| "I have an interview on Thursday" | Likely questions, your answers, and a practice run |
 
-You do not memorise these. Ask for what you want in your own words and it works out which one applies.
+Nothing to memorise. Ask for what you want and it works out the rest.
 
 ---
 
-## The rule the whole thing runs on
+## The one rule
 
 **Nothing goes into a document unless you said it.**
 
-Not "probably true". Not "close enough". If a job advert asks for something you do not have, the system tells you it is a gap and leaves it out, so you find out sitting at your desk instead of in an interview.
+If a job advert asks for something you do not have, it tells you and leaves it out. You find out at your desk rather than in an interview.
 
-It will also tell you when a job is a bad fit **before** doing the work, rather than producing a hopeful application. That is deliberate. It is trying to save you the afternoon.
+It will also tell you when a job is a bad fit *before* doing the work, to save you the afternoon.
 
-**It never sends anything.** Every email, message and application is written for you to read, change and send yourself. Nothing goes out without you pressing the button.
-
----
-
-## Using a different AI tool
-
-The system is just a set of written instructions, so any capable AI can follow them. The only hard requirement is that it can read and write files on your computer.
-
-**Claude Code** is the smoothest, because it recognises the instructions automatically. Nothing to configure.
-
-**Other agent tools** — Gemini CLI, OpenAI Codex, Cursor, GitHub Copilot, Windsurf, Zed, Aider, JetBrains Junie and others — read a file called `AGENTS.md`, which is included here. Open your tool in this folder and say "set up my job search system". It should find its way. If it does not, tell it to read `.claude/skills/job-search-setup/SKILL.md` and follow it.
-
-**Browser chat tools** — ChatGPT, Gemini and Claude on the web — will not work properly. They cannot save files to your computer, so nothing survives the conversation ending, which removes the entire point. You can paste the instructions in and get one CV out of it, but you will be starting from scratch every time.
+**It never sends anything.** Every email and application is written for you to read, change and send yourself.
 
 ---
 
-## Keeping the cost down
+## Making your plan go further
 
-AI tools charge by how much text they read and write. Every message you send re-sends the whole conversation so far, so a long rambling session costs far more than several short focused ones. Five habits do most of the work:
+This is about **usage limits, not extra money**. Your plan lets you do a certain amount in a given period. Go over it and you wait for it to reset — you are not charged more. These habits mean you hit that limit far less often.
 
-**1. Start a fresh conversation for each job.** This is the big one. Type `/clear` between applications, or start a new session in the desktop app. Otherwise application number four is still carrying applications one, two and three in memory, and paying for them every time.
+The reason is simple: each time you send a message, Claude re-reads the whole conversation so far. A long sprawling chat costs much more than several short ones.
 
-**2. Do one application at a time.** Finish it, clear, start the next. Batching feels efficient and is the most expensive way to work.
+**Start a new chat for each job.** This matters more than everything else here. If you do four applications in one conversation, the fourth one is still carrying the first three.
 
-**3. Keep `CAREER_FACTS.md` tight.** It gets read on nearly every task, so it is the file you pay for most often. Facts, numbers and dates. Not stories.
+**Finish one application before starting the next.** Doing several at once feels efficient. It is the most wasteful way to work.
 
-**4. Do not paste a whole careers page.** Paste the job description text. The navigation menu, the cookie banner and the company boilerplate all cost the same as the useful part.
+**Paste the job description, not the whole web page.** Menus, cookie banners and company boilerplate all count.
 
-**5. Ask for what you want.** "Tailor my CV for this" is cheaper than a conversation that wanders toward the same place.
+**Say what you want directly.** "Tailor my CV for this" uses less than a long conversation that gets to the same place.
 
-The setup interview is the most expensive single session you will have, and it happens once. Day-to-day use afterwards is much lighter, because only the one instruction file needed for the task gets loaded rather than the whole system.
-
-If you want to see what you are spending, Claude Code has a `/cost` command.
+The setup interview is the heaviest thing you will do, and you only do it once. Normal use afterwards is much lighter.
 
 ---
 
-## Common problems
+## If something goes wrong
 
-**"It says it cannot find the instructions."**
-It is open on the wrong folder. The instructions live inside the project, so it has to be pointed at the folder you unzipped.
+**"It cannot find the instructions."**
+It is looking at the wrong folder. Click **Select folder** again and choose the unzipped folder itself — the one with `README.md` inside it. Choosing the folder that *contains* it is the usual mistake.
 
-In the desktop app, click **Select folder** again and pick the unzipped folder — the one containing `README.md` and a `.claude` folder. If you selected the folder that *contains* it rather than the folder itself, that is the usual mistake.
+**"It asked me something I do not know."**
+Say "I do not know" or "skip that". It notes the gap and moves on.
 
-In the terminal, close it, `cd` into the project folder, and run `claude` again.
-
-**"I installed the desktop app on Windows and the Code tab will not work."**
-You are missing Git for Windows. Install it from [git-scm.com/downloads/win](https://git-scm.com/downloads/win), then fully restart Claude.
-
-**"It asked me a question I do not know the answer to."**
-Say so. "I do not know" and "skip that" both work. It marks the gap and moves on.
-
-**"It made something up anyway."**
-Tell it. Something like "that number is not in my facts file, take it out". Then check `CAREER_FACTS.md` — usually the fact is missing from the file, which is why it improvised. Add it and it will not happen again.
+**"It made something up."**
+Tell it: "that is not in my facts file, take it out." Then check your `CAREER_FACTS.md` — usually the fact is simply missing, which is why it guessed. Add it and it will not happen again.
 
 **"Can I change what it wrote about me?"**
-Yes, and you should. The files are ordinary text files. Open them in any text editor and edit freely, or just tell the AI what to change. `POSITIONING.md` in particular is worth rewriting in your own words — it was written about you by something that met you an hour ago.
+Yes, and you should. These are ordinary text files. Open them and edit, or just tell Claude what to change. It is worth rewriting the file about your goals in your own words.
 
-**"Do I have to do the whole interview at once?"**
+**"Do I have to do it all at once?"**
 No. Stop whenever. Come back and say "carry on with my setup".
 
 ---
 
 ## What this does not do
 
-- It does not apply to jobs for you. You send everything yourself.
+- It does not apply for jobs. You send everything yourself.
 - It does not find jobs. You bring the advert.
-- It does not work without a tool that can access your files.
-- It will not write you a CV that is better than your actual career. It will make sure your actual career is presented properly, which is a different and more useful thing.
+- It will not invent a better career than you have. It makes sure the one you have is presented properly.
 
 ---
 
 ## Your privacy
 
-Everything lives on your own computer, in your own folder. This project has no server, collects nothing, and sends nothing anywhere.
+Everything stays on your computer. This project has no website, collects nothing and sends nothing anywhere.
 
-The one thing to understand: whatever you type into your AI tool goes to that company's model to be processed, exactly as it would in any normal conversation with it. That is between you and them, and their privacy policy applies. This project adds nothing on top and takes nothing out.
+What you type goes to Claude to be processed, exactly as in any normal conversation. That is between you and Anthropic, under their privacy policy. This project adds nothing to that.
 
-If you keep your personal folder inside a project you later put on the internet, you could publish your own career details by accident. Keep `Job_Search_HQ` somewhere separate, like your Documents folder. A `.gitignore` file here tries to prevent this, but do not rely on it.
+Keep your `Job_Search_HQ` folder separate from this project folder. If you ever put a project online, you do not want your salary and work history going with it.
+
+---
+
+## Other ways to run this
+
+The instructions here are plain writing, so other AI tools can follow them. The only requirement is that the tool can open and save files on your computer.
+
+**Terminal**, if you prefer it: install Claude Code from [claude.com/claude-code](https://claude.com/claude-code), then `cd` into the unzipped folder and run `claude`.
+
+**Other agent tools** — Gemini CLI, OpenAI Codex, Cursor, GitHub Copilot, Windsurf, Zed, Aider and others — read the `AGENTS.md` file included here. Open the folder in your tool and say "set up my job search system".
+
+**Browser chats** — ChatGPT, Gemini or Claude on the web — will not work. They cannot save files to your computer, so nothing survives the conversation ending.
 
 ---
 
 ## Contributing
 
-Improvements are welcome, particularly from people who have actually run a search with it. Open an issue describing what did not work.
+Found something confusing or broken? Open an issue and say what happened. Feedback from people actually job hunting is the most useful kind.
 
-Please do not open pull requests containing your own career information as examples.
+Please do not submit your own career details as examples.
 
 ## Licence
 
-MIT. Use it, change it, share it, build on it commercially. No attribution required, though it is appreciated.
+MIT. Use it, change it, share it. No attribution required.
