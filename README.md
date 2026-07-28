@@ -1,5 +1,7 @@
 # AI Job Search System
 
+### Never forget, never fabricate.
+
 Most people use AI for job hunting by pasting their CV into a chat and asking it to rewrite something. Two things go wrong.
 
 **It forgets.** Close the chat and everything it learned about you is gone. Next time, you start again.
@@ -12,7 +14,7 @@ It interviews you once about your career and saves your answers to your own comp
 
 Then you paste a job advert, say **"apply for this"**, and get back a tailored CV, a cover letter, a tracker entry, and two people at that company worth emailing.
 
-Free to use, runs on your computer, and your details stay there.
+This system is free and always will be. It runs on your computer, and your details stay there. You will need a paid Claude plan to run it, but that money goes to Anthropic, not here.
 
 ---
 
@@ -34,11 +36,13 @@ You will not write any code. You type in plain English the whole way through.
 
 ### 1. Download this project
 
-Click the green **Code** button near the top of this page.
+Click the green **`<> Code`** button near the top of this page.
 
 A small panel opens. If you see tabs called **Local** and **Codespaces**, click **Local**. Then click **Download ZIP**.
 
 Now unzip the file. On Windows, right-click it and choose **Extract All**. On Mac, double-click it. Put the folder somewhere you will find again, like Documents.
+
+The unzipped folder will be called **`AI-job-search-system-main`**, with `-main` on the end. That is normal — GitHub adds it to every download. Leave the name as it is.
 
 ### 2. Open the folder in Claude
 
