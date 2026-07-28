@@ -40,7 +40,13 @@ You do not need to know how to code. You will not write any code. You type in pl
 
 ### Step 1: Download this project
 
-Click the green **Code** button at the top of this page, then **Download ZIP**. Unzip it somewhere you will find again, like your Documents folder.
+Click the green **Code** button at the top of this page.
+
+A small panel opens. Depending on your account, it may show tabs along the top — **Local** and **Codespaces**. **Make sure you are on the Local tab.** If you land on Codespaces you will not see the download option at all, which is the usual reason people get stuck here.
+
+On the Local tab, click **Download ZIP** at the bottom.
+
+Then unzip it somewhere you will find again, like your Documents folder. On Windows, right-click the downloaded file and choose **Extract All**. On Mac, double-click it.
 
 If you know how to use Git, clone it instead. If you do not know what that means, ignore this line — the ZIP is fine.
 
