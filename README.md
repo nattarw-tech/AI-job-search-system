@@ -177,13 +177,35 @@ Keep your `Job_Search_HQ` folder separate from this project folder. If you ever 
 
 ## Other ways to run this
 
-The instructions here are plain writing, so other AI tools can follow them. The only requirement is that the tool can open and save files on your computer.
+**This was built for Claude Code, and that is the only setup I have tested.** Everything below is honest about what I know and what I do not.
 
-**Terminal**, if you prefer it: install Claude Code from [claude.com/claude-code](https://claude.com/claude-code), then `cd` into the unzipped folder and run `claude`.
+### Terminal instead of the app
 
-**Other agent tools** — Gemini CLI, OpenAI Codex, Cursor, GitHub Copilot, Windsurf, Zed, Aider and others — read the `AGENTS.md` file included here. Open the folder in your tool and say "set up my job search system".
+Same tool, different window. Install Claude Code from [claude.com/claude-code](https://claude.com/claude-code), then `cd` into the unzipped folder and run `claude`. Everything works identically.
 
-**Browser chats** — ChatGPT, Gemini or Claude on the web — will not work. They cannot save files to your computer, so nothing survives the conversation ending.
+### Other AI agents
+
+Gemini CLI, OpenAI Codex, Cursor, Windsurf, Zed, Aider, GitHub Copilot and Manus Desktop can all read and write local files, and the instructions here are plain English, so they should be able to follow them. An `AGENTS.md` file is included, which those tools look for automatically.
+
+**Two honest caveats.**
+
+I have not tested any of them. If you try one, please open an issue and say how it went — that is genuinely useful and I will update this section.
+
+More importantly, **you will lose the automatic part.** Claude Code recognises the seven skills on its own, so you just say "apply for this" and it knows what to do. Other tools do not read that folder. Your career files will be built correctly, but afterwards you will need to point the tool at the right instructions each time, like this:
+
+```
+Read job-search-setup/SKILL.md and follow the tailor-cv instructions for this job advert.
+```
+
+It still works. It is just more typing, every time.
+
+### What will not work
+
+**Browser chats.** ChatGPT, Gemini, Claude or Copilot in a web browser cannot save files to your computer, so nothing survives the conversation ending. That removes the entire point.
+
+Note that ChatGPT in a browser and OpenAI's Codex are different products. Codex runs on your machine and can be used here. ChatGPT in a tab cannot.
+
+**Manus cloud sandbox.** Manus running in the cloud keeps files in a temporary container rather than on your computer. Use Manus Desktop instead, which works locally.
 
 ---
 
