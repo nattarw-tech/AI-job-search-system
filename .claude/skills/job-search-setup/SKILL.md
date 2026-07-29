@@ -727,7 +727,11 @@ Find the user's skills directory. In Claude Code that is `.claude/skills/` insid
 
 For each skill below, create a folder named after the skill and write the content as `SKILL.md` inside it.
 
-**In every one, replace `{{HQ}}` with the real absolute path from Step 0.** Check afterwards that no `{{HQ}}` remains anywhere.
+**In every one, replace `{{HQ}}` with the real absolute path from Step 0.**
+
+**Write these files directly. Do not script the substitution.** On Windows the path contains backslashes, and `sed`, `perl` and most find-and-replace tools read those as escape characters. `C:\Users\Sam\Documents` silently becomes `C:SERSSAMDOCUMENTS`, the skill then points at a folder that does not exist, and nobody finds out until the first CV fails.
+
+After writing them, check two things: that no `{{HQ}}` remains anywhere, and that the `HQ` line in each file reads back as the correct path with its backslashes intact.
 
 ### `tailor-cv/SKILL.md`
 
